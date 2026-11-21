@@ -1,4 +1,5 @@
 import pygame
+from game_engine import GameEngine
 
 class App:
     DISPLAY_SIZE = 700
@@ -9,6 +10,7 @@ class App:
         self.screen = pygame.display.set_mode((self.DISPLAY_SIZE, self.DISPLAY_SIZE))
         pygame.display.set_caption("Neural Paper.io")
         self.clock = pygame.Clock()
+        self.engine = GameEngine()
 
     def draw_map(self) -> None:
         self.screen.fill(pygame.Color(31, 139, 201))
@@ -16,8 +18,15 @@ class App:
         radius = self.DISPLAY_SIZE / 2
         pygame.draw.circle(self.screen, pygame.Color("white"), center, radius)
 
+    def draw_bots(self) -> None:
+        for bot in self.engine.bots:
+            rect = pygame.rect.Rect(0, 0, bot.size, bot.size)
+            rect.center = bot.pos
+            pygame.draw.rect(self.screen, bot.color, rect)
+
     def draw(self) -> None:
         self.draw_map()
+        self.draw_bots()
 
     def main(self) -> None:
         running = True
@@ -26,6 +35,7 @@ class App:
                 if event.type == pygame.QUIT:
                     running = False
             self.draw()
+            self.engine.step()
             pygame.display.update()
             self.clock.tick(120)
 
