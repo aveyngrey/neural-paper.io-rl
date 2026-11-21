@@ -11,4 +11,3 @@ class Bot:
         self.color = color
         self.pos = pos
         self.angle = angle
-        self.size = constants.DISPLAY_SIZE / 20
