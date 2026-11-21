@@ -14,5 +14,5 @@ class GameEngine:
     def step(self):
         for bot in self.bots:
             dx = math.cos(bot.angle) * constants.SPEED
-            dy = math.sin(bot.angple) * constants.SPEED
-            bot.self.pos += Vector2(dx, dy)
+            dy = math.sin(bot.angle) * constants.SPEED
+            bot.pos += Vector2(dx, dy)
