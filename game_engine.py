@@ -10,3 +10,9 @@ class GameEngine:
         self.bots.append(Bot(color=pygame.Color("orange"),
                              pos=constants.CENTER + Vector2(50, 50),
                              angle=math.pi))
+
+    def step(self):
+        for bot in self.bots:
+            dx = math.cos(bot.angle) * constants.SPEED
+            dy = math.sin(bot.angple) * constants.SPEED
+            bot.self.pos += Vector2(dx, dy)
