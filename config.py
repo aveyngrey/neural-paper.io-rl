@@ -1,9 +1,8 @@
 from app import App
-
-DISPLAY_SIZE = 700
+import constants as const
 
 def main() -> None:
-    app = App(DISPLAY_SIZE)
+    app = App(const.DISPLAY_SIZE)
     app.main()
 
 if __name__ == "__main__":

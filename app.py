@@ -1,6 +1,6 @@
 import pygame
 from game_engine import GameEngine
-import constants
+import constants as const
 
 class App:
     DISPLAY_SIZE = 700
@@ -21,7 +21,7 @@ class App:
 
     def draw_bots(self) -> None:
         for bot in self.engine.bots:
-            rect = pygame.rect.Rect(0, 0, constants.BOT_SIZE, constants.BOT_SIZE)
+            rect = pygame.rect.Rect(0, 0, const.BOT_SIZE, const.BOT_SIZE)
             rect.center = bot.pos
             pygame.draw.rect(self.screen, bot.color, rect)
 
@@ -38,6 +38,6 @@ class App:
             self.draw()
             self.engine.step()
             pygame.display.update()
-            self.clock.tick(120)
+            self.clock.tick(const.FPS)
 
         pygame.quit()
