@@ -9,6 +9,11 @@ class Bot:
                  pos: Vector2 = Vector2(const.DISPLAY_SIZE / 2, const.DISPLAY_SIZE / 2), 
                  angle: float = math.pi / 2) -> None:
         self.color = color
+        self.color = pygame.Color(color)
+        self.territory_color = self.color.lerp(pygame.Color(0, 0, 0), 0.3)
+        self.trail_color = self.color.lerp(pygame.Color(255, 255, 255), 0.3)
+        
+        self.start_pos = pos
         self.pos = pos
         self.angle = angle
         self.direction = Vector2(math.cos(self.angle), -1 * math.sin(self.angle))

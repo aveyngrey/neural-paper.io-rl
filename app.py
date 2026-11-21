@@ -25,8 +25,13 @@ class App:
             rect.center = bot.pos
             pygame.draw.rect(self.screen, bot.color, rect)
 
+    def draw_territories(self) -> None:
+        for bot in self.engine.bots:
+            pygame.draw.circle(self.screen, bot.territory_color, bot.start_pos, 30)
+
     def draw(self) -> None:
         self.draw_map()
+        self.draw_territories()
         self.draw_bots()
 
     def main(self) -> None:
